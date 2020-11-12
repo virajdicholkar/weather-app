@@ -21,7 +21,7 @@ export class WeatherController {
         return weatherRouter;
     }
 
-    private getWeather = async (req: Request, res: Response) => {
+    private getWeather = async (req: Request, res: Response, next) => {
         try {
             const city = req.query['city'];
             const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.apiKey}`;
@@ -33,6 +33,8 @@ export class WeatherController {
             const message = error.message || 'Oops! Something went wrong!';
             const code = error.code || 500;
             res.status(code).json({ message });
+        } finally {
+            next();
         }
     }
 
