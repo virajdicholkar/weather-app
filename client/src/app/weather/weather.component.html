@@ -1,0 +1,27 @@
+<div class="container-fluid ">
+    <div class="row">
+        <nav class="col-12 border-bottom navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">Weather report</span>
+        </nav>
+    </div>
+    <div class="form-row row px-2 pt-2">
+        <label class="col-form-label pl-0 h-1">City: </label>
+        <div class="col-auto">
+            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Pune">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </div>
+    </div>
+
+    <div class="row px-2 pt-1">
+        <ul class="nav nav-tabs col-12">
+            <li class="nav-item">
+                <a class="nav-link " routerLinkActive='active' routerLink='/weather/table'>Tabular</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" routerLinkActive='active' routerLink='/weather/line-chart'>Line chart</a>
+            </li>
+        </ul>
+    </div>
+</div>

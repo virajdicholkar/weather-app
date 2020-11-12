@@ -1,22 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
-import { DashboardLayoutComponent } from './layout/dashboard-layout/dashboard-layout.component';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  {
+    path: 'weather',
+    loadChildren: () => import('./weather/weather.module').then(m => m.WeatherModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'weather'
+  }]
 @NgModule({
   declarations: [
     AppComponent,
-    AuthLayoutComponent,
-    DashboardLayoutComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
