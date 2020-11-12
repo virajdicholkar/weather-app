@@ -15,5 +15,6 @@ export const logRequest = async (req, res, next) => {
         cookies: req.cookies
     }
     const reqLogResult = await RequestLogModel.create(newRequestLog);
+    req['reqLogId'] = reqLogResult._id;
     next()
 }
