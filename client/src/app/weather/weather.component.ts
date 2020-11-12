@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from '../services/rest/rest.service';
+import { WeatherService } from './weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -7,19 +7,16 @@ import { RestService } from '../services/rest/rest.service';
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
-
+  city = 'Pune'
   constructor(
-    private restService: RestService,
+    private weatherService: WeatherService
   ) { }
 
   ngOnInit(): void {
     this.getWeatherData();
   }
 
-  getWeatherData(city = 'Pune') {
-    const path = 'weather'
-    this.restService.get(path, { city }).subscribe(data=>{
-      console.log('data', data)
-    })
+  getWeatherData() {
+    this.weatherService.getData(this.city);
   }
 }

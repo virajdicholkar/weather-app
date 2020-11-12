@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherComponent } from './weather.component';
 import { RouterModule, Routes } from '@angular/router';
+import { TableComponent } from './table/table.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -10,9 +13,11 @@ const routes: Routes = [
     children: [
       {
         path: 'table',
+        component: TableComponent
       },
       {
         path: 'line-chart',
+        component: LineChartComponent
       },
       {
         path: '**',
@@ -24,11 +29,14 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    WeatherComponent
+    WeatherComponent,
+    TableComponent,
+    LineChartComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule
   ]
 })
 export class WeatherModule { }

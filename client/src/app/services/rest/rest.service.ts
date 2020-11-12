@@ -57,7 +57,6 @@ export class RestService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    */
   get(path: string, search?: object, absoluteUrl?: boolean): Observable<any> {
-    console.log('path', path)
     let queryParams = '';
     for (const key in search) {
       if (search.hasOwnProperty(key)) {
