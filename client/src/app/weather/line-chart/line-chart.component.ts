@@ -70,6 +70,7 @@ export class LineChartComponent implements OnInit {
 
   initWeatherDataGroupByDay() {
     let currentDate = new Date(this.weatherData[0].dt_txt);
+    this.weatherDataByDay = [];
     let currentWeatherList = [];
     this.weatherData.forEach((weather) => {
       const weatherDate = new Date(weather.dt_txt);
