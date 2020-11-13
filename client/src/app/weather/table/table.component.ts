@@ -16,7 +16,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.weatherService.weatherData.subscribe(
-      ({list}) => {
+      ({ list }) => {
         this.initWeatherData(list);
       }
     )
@@ -58,6 +58,14 @@ export class TableComponent implements OnInit {
         currentDate = weatherDate;
       }
     })
+    const newAvgWeather = {
+      date: currentDate,
+      temp: currentTempTotal / currentCount,
+      pressure: currentPressureTotal / currentCount,
+      humidity: currentHumidityTotal / currentCount,
+      weatherList: currentWeatherList
+    }
+    this.weatherData.push(newAvgWeather);
   }
 
   convertKelvinToDegree(tempInKelvin) {
