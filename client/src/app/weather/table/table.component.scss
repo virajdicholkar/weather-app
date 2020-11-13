@@ -1,3 +1,14 @@
 .main-tr{
     cursor: pointer;
+    &:hover{
+    background-color: rgba(0,0,0,.075);
+
+    }
+}
+.selected-row{
+    background-color: rgba(0,0,0,.075);
+}
+.weather-img{
+    width: 30px;
+    height: 30px;
 }

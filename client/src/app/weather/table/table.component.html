@@ -1,9 +1,8 @@
-<table class="table table-hover w-100">
+<table class="table w-100">
     <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Day</th>
-            <th scope="col">Time</th>
+            <!-- <th scope="col">Time</th> -->
             <th scope="col">Temperature (In degree celcious)</th>
             <th scope="col">Pressure (In hPa)</th>
             <th scope="col">Humidity (In %)</th>
@@ -11,17 +10,78 @@
     </thead>
     <tbody>
         <ng-container *ngFor="let weather of weatherData; let i = index">
-            <tr class="main-tr" >
-                <th scope="row">{{i + 1}}</th>
-                <td>{{weather.dt_txt | date : 'EEEE, MMMM d'}}</td>
-                <td>{{weather.dt_txt | date : 'h:mm a'}}</td>
-                <td>{{convertKelvinToDegree(weather.main.temp) | number : '1.2'}}</td>
-                <td>{{weather.main.pressure}}</td>
-                <td>{{weather.main.humidity}}</td>
-                <td><img data-toggle="tooltip" data-placement="top" title="{{weather.weather[0].description}}"
-                        src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png"></td>
+            <tr class="main-tr" [ngClass]="{'selected-row': weather === selectedWeather}"
+                (click)="selectedWeather = selectedWeather=== weather ? null: weather">
+                <td>{{weather.date | date : 'EEEE, MMMM d'}}</td>
+                <td>{{convertKelvinToDegree(weather.temp) | number : '1.2'}} °C</td>
+                <td>{{weather.pressure}}</td>
+                <td>{{weather.humidity}}</td>
+                <!-- <td><img data-toggle="tooltip" data-placement="top" title="{{weather.weather[0].description}}"
+                        src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png"></td> -->
             </tr>
-            
+            <tr *ngIf="selectedWeather === weather">
+                <td colspan="4">
+                    <table class="my-2 table table-bordered w-100">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" *ngFor="let weatherAtTime of weather.weatherList">
+                                    {{weatherAtTime.dt_txt | date : 'h:mm a'}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Temparature (In °C)</th>
+                                <td *ngFor="let weatherAtTime of weather.weatherList">
+                                    {{convertKelvinToDegree(weatherAtTime.main.temp) | number : '1.2'}}°C</td>
+                            </tr>
+                            <tr>
+                                <th>Humidity (In %)</th>
+                                <td *ngFor="let weatherAtTime of weather.weatherList">
+                                    {{convertKelvinToDegree(weatherAtTime.main.humidity) | number : '1.2'}}°C</td>
+                            </tr>
+                            <tr>
+                                <th>Pressure (In hPa)</th>
+                                <td *ngFor="let weatherAtTime of weather.weatherList">
+                                    {{convertKelvinToDegree(weatherAtTime.main.pressure) | number : '1.2'}}°C</td>
+                            </tr>
+                            <tr>
+                                <th>Visibility</th>
+                                <td *ngFor="let weatherAtTime of weather.weatherList">
+                                    {{convertKelvinToDegree(weatherAtTime.visibility) | number : '1.2'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td *ngFor="let weatherAtTime of weather.weatherList">
+                                    <div class="d-flex">
+                                        <img class="weather-img" src="http://openweathermap.org/img/w/{{weatherAtTime.weather[0].icon}}.png">
+                                        <p class="ml-1">{{ weatherAtTime.weather[0].description }}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+
+                <!-- <td colspan="6">
+
+                    <div class="row p-2 w-100">
+                        <div class="col-4">
+                            <p>Temparature: {{convertKelvinToDegree(weather.temp) | number : '1.2'}} °C</p>
+                            <p>Minimum Temparature: {{convertKelvinToDegree(weather.temp_min) | number : '1.2'}} °C
+                            </p>
+                            <p>Maximum Temparature: {{convertKelvinToDegree(weather.temp_min) | number : '1.2'}} °C
+                            </p>
+                            <p>Humidity: {{weather.humidity}} %</p>
+                            <p>Pressure: {{weather.pressure}} hPa</p>
+                        </div>
+                        <div class="col-4">
+                            <p>Ground Level: {{weather.grnd_level}}</p>
+                            <p>Sea Level: {{weather.sea_level}}</p>
+                        </div>
+                    </div>
+                </td> -->
+            </tr>
         </ng-container>
     </tbody>
 </table>
