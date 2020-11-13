@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TableComponent } from './table/table.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { FormsModule } from '@angular/forms';
-
+import { ChartsModule } from 'ng2-charts';
 const routes: Routes = [
   {
     path: '',
@@ -36,7 +36,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    FormsModule
+    FormsModule,
+    ChartsModule
   ]
 })
 export class WeatherModule { }
