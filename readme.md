@@ -17,3 +17,10 @@ Weather application that loads data from OpenWeather API.
 ## Build the client
 - To run the client in dev mode, run `npm run client:dev`
 - To run the client in prod mode, run `npm run client:prod`
+
+## Improvements can be done
+- Data can be visualized using various chart widgets 
+- Each day detail can be visualize
+- We can have different query options for data
+- Line chart comparison can be added for each parameter data representation
+- Average weather summary can be added

@@ -14,8 +14,8 @@
                 (click)="selectedWeather = selectedWeather=== weather ? null: weather">
                 <td>{{weather.date | date : 'EEEE, MMMM d'}}</td>
                 <td>{{convertKelvinToDegree(weather.temp) | number : '1.2'}} °C</td>
-                <td>{{weather.pressure}}</td>
-                <td>{{weather.humidity}}</td>
+                <td>{{weather.pressure | number : '1.2' }}</td>
+                <td>{{weather.humidity | number : '1.2' }}</td>
                 <!-- <td><img data-toggle="tooltip" data-placement="top" title="{{weather.weather[0].description}}"
                         src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png"></td> -->
             </tr>
@@ -38,23 +38,24 @@
                             <tr>
                                 <th>Humidity (In %)</th>
                                 <td *ngFor="let weatherAtTime of weather.weatherList">
-                                    {{convertKelvinToDegree(weatherAtTime.main.humidity) | number : '1.2'}}°C</td>
+                                    {{weatherAtTime.main.humidity | number : '1.2'}}°C</td>
                             </tr>
                             <tr>
                                 <th>Pressure (In hPa)</th>
                                 <td *ngFor="let weatherAtTime of weather.weatherList">
-                                    {{convertKelvinToDegree(weatherAtTime.main.pressure) | number : '1.2'}}°C</td>
+                                    {{weatherAtTime.main.pressure | number : '1.2'}}°C</td>
                             </tr>
                             <tr>
                                 <th>Visibility</th>
                                 <td *ngFor="let weatherAtTime of weather.weatherList">
-                                    {{convertKelvinToDegree(weatherAtTime.visibility) | number : '1.2'}}</td>
+                                    {{weatherAtTime.visibility | number : '1.2'}}</td>
                             </tr>
                             <tr>
                                 <th>Description</th>
                                 <td *ngFor="let weatherAtTime of weather.weatherList">
                                     <div class="d-flex">
-                                        <img class="weather-img" src="http://openweathermap.org/img/w/{{weatherAtTime.weather[0].icon}}.png">
+                                        <img class="weather-img"
+                                            src="http://openweathermap.org/img/w/{{weatherAtTime.weather[0].icon}}.png">
                                         <p class="ml-1">{{ weatherAtTime.weather[0].description }}</p>
                                     </div>
                                 </td>

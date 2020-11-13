@@ -18,7 +18,6 @@ export const logRequest = async (req: Request, res, next) => {
         body: req.body,
         params: req.params
     }
-    console.log('newRequestLog', newRequestLog)
     const reqLogResult = await RequestLogModel.create(newRequestLog);
     req['reqLogId'] = reqLogResult._id;
     next()
