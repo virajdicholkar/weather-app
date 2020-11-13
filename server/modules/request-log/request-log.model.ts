@@ -14,6 +14,9 @@ export interface RequestLogInterface{
     protocol: string;
     subdomains?: string[];
     cookies?: any;
+    query?: any;
+    body?: any;
+    params?:any
 }
 
 export const RequestLogSchema = new Schema({
@@ -41,7 +44,10 @@ export const RequestLogSchema = new Schema({
     subdomains: [{
         type: String
     }],
-    cookies: {}
+    cookies: {},
+    query: {},
+    params: {},
+    body: {}
 
 }, {
     timestamps: true
