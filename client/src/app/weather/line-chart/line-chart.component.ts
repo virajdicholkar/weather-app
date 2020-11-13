@@ -12,11 +12,13 @@ export class LineChartComponent implements OnInit {
   parametersToShow = [{
     key: 'temp',
     name: 'Temperature (in °C)',
-    converter: (value) => value - 273.15
+    converter: (value) => Math.round((value - 273.15) * 100) / 100,
+    color: 'red'
   },
   {
     key: 'humidity',
     name: 'Humidity (in %)',
+    color: 'green'
   }]
   selectedParameter = this.parametersToShow[0];
   public lineChartData: ChartDataSets[] = [];
@@ -59,6 +61,7 @@ export class LineChartComponent implements OnInit {
   initLineChart(weatherData: any = this.selectedWeatherData) {
     this.lineChartData = [{ data: [], label: this.selectedParameter.name }];
     const key = this.selectedParameter.key;
+    this.lineChartColors = [{ borderColor: this.selectedParameter.color }]
     const converter = this.selectedParameter.converter;
     this.lineChartLabels = [];
     weatherData.list.forEach((data) => {
