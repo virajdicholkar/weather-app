@@ -1,7 +1,7 @@
 {
-  "name": "node-starter",
+  "name": "weather-app",
   "version": "1.0.0",
-  "description": "Node starter kit to start any node application easily.",
+  "description": "Weather application that loads current 5 days weather data from open weather api.",
   "main": "build/server.js",
   "scripts": {
     "app-install": "npm install && npm run client:install",
