@@ -4,17 +4,17 @@
             <span class="navbar-brand mb-0 h1">Weather report</span>
         </nav>
     </div>
-    <div class="form-row row px-2 pt-2">
-        <label class="col-form-label pl-0 h-1">City: </label>
-        <div class="col-auto">
-            <input type="text" [(ngModel)]='city' class="form-control mb-2" id="inlineFormInput" placeholder="Pune">
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-2" (click)="this.getWeatherData()">Search</button>
+    <div class="row pt-2">
+        <div class="col-4 input-group my-3">
+            <input type="text" class="form-control" [(ngModel)]='city' placeholder="Search city"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="getWeatherData()" type="button">Search</button>
+            </div>
         </div>
     </div>
 
-    <div class="row px-2 pt-1" >
+    <div class="row px-3 pt-1">
         <ul class="nav nav-tabs col-12">
             <li class="nav-item">
                 <a class="nav-link " routerLinkActive='active' routerLink='/weather/table'>Tabular</a>
@@ -23,7 +23,9 @@
                 <a class="nav-link" routerLinkActive='active' routerLink='/weather/line-chart'>Line chart</a>
             </li>
         </ul>
-        <router-outlet ></router-outlet>
+        <div class="py-2 w-100">
+            <router-outlet></router-outlet>
+        </div>
     </div>
     <div class="row px-2 pt-0">
     </div>
