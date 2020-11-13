@@ -42,8 +42,6 @@ export class TableComponent implements OnInit {
         currentPressureTotal += weather.main.pressure;
         currentWeatherList.push(weather);
       } else {
-        console.log('currentTempTotal', currentTempTotal)
-        console.log('currentPressureTotal', currentPressureTotal)
         const newAvgWeather = {
           date: currentDate,
           temp: currentTempTotal / currentCount,
@@ -58,9 +56,7 @@ export class TableComponent implements OnInit {
         currentPressureTotal = weather.main.pressure;
         currentWeatherList = [weather];
         currentDate = weatherDate;
-        
       }
-      console.log('this.weatherData', this.weatherData)
     })
   }
 
