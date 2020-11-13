@@ -16,8 +16,8 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.weatherService.weatherData.subscribe(
-      data => {
-        this.initWeatherData(data);
+      ({list}) => {
+        this.initWeatherData(list);
       }
     )
   }

@@ -23,12 +23,13 @@ export class WeatherController {
 
     private getWeather = async (req: Request, res: Response, next) => {
         try {
-            const city = req.query['city'];
-            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.apiKey}`;
+            const dataOfCity = req.query['city'];
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${dataOfCity}&appid=${this.apiKey}`;
             const response = await fetch(url);
             const responseBody = await response.json()
-            const weatherLis = responseBody.list;
-            res.status(200).json(weatherLis);
+            const list = responseBody.list;
+            const city = responseBody.city;
+            res.status(200).json({ list, city });
         } catch (error) {
             const message = error.message || 'Oops! Something went wrong!';
             const code = error.code || 500;

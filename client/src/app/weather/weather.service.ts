@@ -7,7 +7,7 @@ import { RestService } from '../services/rest/rest.service';
 })
 export class WeatherService {
 
-  weatherData = new BehaviorSubject(null);
+  weatherData = new BehaviorSubject<any>({});
   constructor(
     private restService: RestService,
   ) { }
